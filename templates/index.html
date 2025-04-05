@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Steganography</title>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #38bdf8;
+        }
+        .container {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            margin: auto;
+            box-shadow: 0px 0px 10px #38bdf8;
+        }
+        input, textarea, button {
+            width: 90%;
+            margin: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            background: #38bdf8;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0ea5e9;
+        }
+        .output {
+            background: #334155;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            color: #f1f5f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔒 Image Steganography 🔓</h1>
+
+    <div class="container">
+        <!-- Encrypt Section -->
+        <h2>Encrypt a Message</h2>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" required><br>
+            <textarea name="message" rows="3" placeholder="Enter secret message..." required></textarea><br>
+            <button type="submit" name="encrypt">Encrypt & Download</button>
+        </form>
+
+        <hr>
+
+        <!-- Decrypt Section -->
+        <h2>Decrypt a Message</h2>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <input type="file" name="decrypt_image" required><br>
+            <button type="submit" name="decrypt">Decrypt</button>
+        </form>
+
+        <!-- Display Decrypted Message -->
+        {% if decrypted_message is not none %}
+        <div class="output">
+            <h3>Decrypted Message:</h3>
+            <p>{{ decrypted_message }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
