@@ -10,6 +10,11 @@ ENCRYPTED_FOLDER = "static/encrypted"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(ENCRYPTED_FOLDER, exist_ok=True)
 
+@app.route('/favicon.ico')
+def favicon():
+    return '', 204
+
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     decrypted_message = None  # Default value
